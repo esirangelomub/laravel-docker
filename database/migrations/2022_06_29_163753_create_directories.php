@@ -18,10 +18,11 @@ class CreateDirectories extends Migration
 
             $table->string('name', 255);
             $table->text('path')->nullable();
-            $table->integer('directories_id')->unsigned()->nullable();
-            $table->foreign('directories_id')->references('id')->on('directories');
+            $table->unsignedBigInteger('directories_id')->nullable();
 
             $table->timestamps();
+
+            $table->foreign('directories_id')->references('id')->on('directories')->onDelete('cascade');
         });
     }
 

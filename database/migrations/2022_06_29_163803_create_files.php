@@ -19,10 +19,11 @@ class CreateFiles extends Migration
             $table->string('name', 255);
             $table->decimal('file_size');
             $table->text('path')->nullable();
-            $table->integer('directories_id')->unsigned();
-            $table->foreign('directories_id')->references('id')->on('directories');
+            $table->unsignedBigInteger('directories_id');
 
             $table->timestamps();
+
+            $table->foreign('directories_id')->references('id')->on('directories')->onDelete('cascade');
         });
     }
 
