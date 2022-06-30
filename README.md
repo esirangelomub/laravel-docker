@@ -25,6 +25,39 @@ Switch to the repo folder
 
     cd laravel-docker
 
+## Running with docker
+
+Install application
+
+    chmod +x install.sh
+    ./install.sh
+
+Docker build
+
+    ./vendor/bin/sail build
+
+Docker up
+
+    chmod +x up.sh
+    ./up.sh
+
+or
+
+    ./vendor/bin/sail up -d
+
+Docker down
+
+    chmod +x down.sh
+    ./down.sh
+
+or
+
+    ./vendor/bin/sail down
+
+Sail guide https://laravel.com/docs/8.x/sail
+
+## Running without docker
+
 Install all the dependencies using composer
 
     composer install
@@ -33,21 +66,20 @@ Copy the example env file and make the required configuration changes in the .en
 
     cp .env.example .env
 
-## Running with docker
+Configure database
 
-Docker build
+    DB_CONNECTION=<YOUR_DB_CONNECTION> // e.g.: mysql 
+    DB_HOST=<YOUR_DB_HOST> // e.g.: mysql
+    DB_PORT=<YOUR_BP_PORT> // e.g.: 3306
+    DB_DATABASE=<YOUR_DB_DATABASE> // e.g.: laravel
+    DB_USERNAME=<YOUR_DB_USERNAME> // e.g.: root
+    DB_PASSWORD=<YOUR_DB_PASSWORD> // e.g.: password
 
-    ./vendor/bin/sail build
+Running seeders and migrations
 
-Docker up
+    php artisan migrate --seed
 
-    ./vendor/bin/sail up -d
+Start application
 
-Docker down
-
-    ./vendor/bin/sail down
-
-Sail guide https://laravel.com/docs/8.x/sail
-
-## Running without docker
+    php artisan serve --host=localhost --port=8084
 
