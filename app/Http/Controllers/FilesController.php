@@ -2,18 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Directory;
+use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class FilesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param int $directories_id
+     * @return Response
      */
-    public function index()
+    public function index(int $directories_id)
     {
-        //
+        $collection = Directory::with(
+            [
+                'files' => function($query) {
+                    $query->select([
+                        'id',
+                        'name',
+                        'file_size',
+                        'path',
+                        'directories_id'
+                    ]);
+                }
+            ])
+            ->orderBy('id')
+            ->find($directories_id,
+                [
+                    'id',
+                    'name',
+                    'path',
+                    'directories_id'
+                ]
+            );
+
+        return view('file.home', ['collection' => $collection]);
     }
 
     /**

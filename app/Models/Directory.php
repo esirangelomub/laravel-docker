@@ -39,12 +39,4 @@ class Directory extends Model
     {
         return $this->hasMany(File::class, 'directories_id', 'id');
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function parent_directory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Directory::class, 'directories_id');
-    }
 }

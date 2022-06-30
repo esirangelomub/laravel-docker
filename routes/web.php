@@ -15,4 +15,10 @@ use App\Http\Controllers\FilesController;
 */
 
 Route::resource('/', DirectoriesController::class);
-Route::resource('files', FilesController::class);
+
+Route::get('files/{directories_id}', [FilesController::class, 'index']);
+Route::get('files/{directories_id}/create', [FilesController::class, 'create']);
+Route::get('files/{directories_id}/edit', [FilesController::class, 'edit']);
+Route::post('files/{directories_id}', [FilesController::class, 'store']);
+Route::put('files/{directories_id}/{id}', [FilesController::class, 'update']);
+Route::delete('files/{directories_id}/{id}', [FilesController::class, 'destroy']);
