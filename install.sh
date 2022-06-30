@@ -7,8 +7,8 @@ echo "Starting application"
 cp .env.example .env
 sleep 1s
 ./vendor/bin/sail up -d
-sleep 10s
 echo "Install application"
+sleep 25s
 ./vendor/bin/sail artisan migrate --seed
 echo "Done"
 echo "Access http://localhost:8084"
