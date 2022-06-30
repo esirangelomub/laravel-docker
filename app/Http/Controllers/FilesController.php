@@ -203,7 +203,7 @@ class FilesController extends Controller
      */
     public function destroy(int $directories_id, int $id)
     {
-        Directory::destroy($id);
+        File::destroy($id);
         $to = $directories_id . '/files';
         return redirect($to)->with('info', 'File deleted successfully!');
     }

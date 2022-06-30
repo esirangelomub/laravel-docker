@@ -17,10 +17,7 @@ class FileFactory extends Factory
         return [
             'name' => $this->faker->company . '.' . $this->faker->fileExtension(),
             'file_size' => $this->faker->randomFloat(2, 1024, 2048),
-            'path' => $this->faker->filePath(),
-            'directories_id' => function() {
-                return Directory::factory()->create()->id;
-            },
+            'path' => $this->faker->filePath()
         ];
     }
 }

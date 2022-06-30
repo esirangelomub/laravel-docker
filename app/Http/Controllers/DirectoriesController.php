@@ -99,7 +99,7 @@ class DirectoriesController extends Controller
      * @param  int  $id
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $data = Directory::find($id, [
             'id',
@@ -114,7 +114,7 @@ class DirectoriesController extends Controller
             'data' => [
                 'name' => $data->name,
                 'path' => $data->path,
-                'directories_id' => null
+                'directories_id' => $data->directories_id
             ],
             'title' => 'Edit Directory',
             'btn_label' => 'Edit'

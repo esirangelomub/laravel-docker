@@ -6,7 +6,6 @@
             <ol class="breadcrumb">
                 <li><a href="/">Directories</a></li>
                 <li><a href="/{{$collection->id}}/files">{{$collection->name}}</a></li>
-                <li href="/{{$collection->id}}/files" class="active">Sub-directories and Files</li>
             </ol>
         </div>
         <div class="col-sm-4">
