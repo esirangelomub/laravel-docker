@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\article;
 use App\Models\Directory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
@@ -13,29 +12,59 @@ class DirectoriesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $directories = Directory::whereNull('directories_id')
-            ->orderBy('id')
-            ->get([
+        $query = Directory::whereNull('directories_id')
+            ->orderBy('id');
+
+        if (!empty(session('search'))) {
+            $query
+                ->where('name', 'like', '%' . session('search') . '%')
+                ->orWhere('path', 'like', '%' . session('search') . '%');
+        }
+
+        $directories = $query->get([
             'id',
             'name',
             'path',
             'directories_id'
         ]);
-        return view('directory.home', ['directories' => $directories]);
+
+        return view('directory.home', [
+            'directories' => $directories,
+            'search' => session('search')
+        ]);
+    }
+
+    /**
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function search()
+    {
+        return redirect('/')->with('search', request()->input('search'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param mixed $directories_id
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create(mixed $directories_id = null)
     {
-        return view('directory.add');
+        return view('directory.save', [
+            'method' => 'POST',
+            'url' => '/',
+            'data' => [
+                'name' => null,
+                'path' => null,
+                'directories_id' => $directories_id
+            ],
+            'title' => 'New Directory',
+            'btn_label' => 'Save'
+        ]);
     }
 
     /**
@@ -56,29 +85,40 @@ class DirectoriesController extends Controller
         $model->directories_id = $request->input('directories_id') ?? null;
         $model->save();
 
-        return redirect('/')->with('info', 'Directory saved successfully!');
-    }
+        $to = '/';
+        if (!empty($request->input('directories_id'))) {
+            $to = $request->input('directories_id') . '/files';
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect($to)->with('info', 'Directory saved successfully!');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
-        //
+        $data = Directory::find($id, [
+            'id',
+            'name',
+            'path',
+            'directories_id'
+        ]);
+
+        return view('directory.save', [
+            'method' => 'PUT',
+            'url' => $id,
+            'data' => [
+                'name' => $data->name,
+                'path' => $data->path,
+                'directories_id' => null
+            ],
+            'title' => 'Edit Directory',
+            'btn_label' => 'Edit'
+        ]);
     }
 
     /**
@@ -90,17 +130,51 @@ class DirectoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $data = $request->all(['name', 'path', 'directories_id']);
+        Directory::where('id', $id)->update($data);
+
+        $to = '/';
+        if (!empty($request->input('directories_id'))) {
+            $to = $request->input('directories_id') . '/files';
+        }
+
+        return redirect($to)->with('info', 'Directory edited successfully!');
+    }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function delete($id)
+    {
+        return view('directory.save', [
+            'method' => 'DELETE',
+            'url' => $id,
+            'data' => [
+                'name' => null,
+                'path' => null,
+                'directories_id' => null
+            ],
+            'title' => 'Delete Directory',
+            'btn_label' => 'Delete'
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param $id
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        //
+        Directory::destroy($id);
+        return redirect('/')->with('info', 'Directory deleted successfully!');
     }
 }

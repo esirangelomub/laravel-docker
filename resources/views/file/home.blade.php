@@ -1,45 +1,79 @@
 @include('inc.header')
 
+<div class="table-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <ol class="breadcrumb">
+                <li><a href="/">Directories</a></li>
+                <li><a href="/{{$collection->id}}/files">{{$collection->name}}</a></li>
+                <li href="/{{$collection->id}}/files" class="active">Sub-directories and Files</li>
+            </ol>
+        </div>
+        <div class="col-sm-4">
+            <a href="{{ url($collection->id . '/create') }}" class="btn btn-outline-danger"><i class="material-icons">&#xe2c7;</i> <span>Add Directory</span></a>
+            <a href="{{ url($collection->id . '/files/create') }}" class="btn btn-outline-danger"><i class="material-icons">&#xe873;</i> <span>Add File</span></a>
+        </div>
+    </div>
+</div>
+
+<div class="table-search">
+    <form method="POST" action="{{ url($collection->id . '/files/search') }}">
+        {{csrf_field()}}
+        <div class="row row-search">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search for..." value="{{$search}}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Search</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 @if(session('info'))
     <div class="alert alert-success">
         {{session('info')}}
     </div>
 @endif
 
-<div class="table-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <a href="{{ url('/') }}"><h2>North River Project (Grand Slam Media)</h2>
-            </a>
-        </div>
-        <div class="col-sm-6">
-            <a href="{{ url('/create') }}" class="btn btn-outline-danger"><i class="material-icons">&#xE147;</i> <span>Add New Directory</span></a>
-        </div>
-    </div>
-</div>
-
 <table class="table table-striped table-hover">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>File</th>
-        <th>Size</th>
+        <th></th>
+        <th>Directory/File</th>
         <th>Path</th>
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
+    @if(count($collection->parent_directories) > 0)
+        @foreach($collection->parent_directories->all() as $directory)
+            <tr>
+
+                <td><i class="material-icons" data-toggle="tooltip" title="Directories">&#xe2c7;</i></td>
+                <td>{{ $directory->name }}</td>
+                <td>{{ $directory->path }}</td>
+                <td class="text-center">
+                    <a href='{{ url("{$directory->id}/files") }}' class="read"><i class="material-icons" data-toggle="tooltip" title="Directories/Files">&#xe0ee;</i></a>
+                    <a href='{{ url("{$directory->id}/edit") }}' class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xe745;</i></a>
+                    <a href='{{ url("{$directory->id}/delete") }}' class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+            </tr>
+        @endforeach
+    @endif
+
     @if(count($collection->files) > 0)
         @foreach($collection->files->all() as $file)
             <tr>
 
-                <td>{{ $file->id }}</td>
-                <td>{{ $file->name }}</td>
-                <td>{{ $file->size }}</td>
+                <td><i class="material-icons" data-toggle="tooltip" title="Files">&#xe873;</i></td>
+                <td>{{ $file->name }} ({{ $file->file_size }} Mb)</td>
                 <td>{{ $file->path }}</td>
-                <td>
-                    <a href='{{ url("/update/{$file->id}") }}' class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                    <a href='{{ url("/delete/{$file->id}") }}' class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <td class="text-center">
+                    <a href='{{ url("{$file->directories_id}/files/{$file->id}/edit") }}' class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xe745;</i></a>
+                    <a href='{{ url("{$file->directories_id}/files/{$file->id}/delete") }}' class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>
         @endforeach

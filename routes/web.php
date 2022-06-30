@@ -14,11 +14,21 @@ use App\Http\Controllers\FilesController;
 |
 */
 
-Route::resource('/', DirectoriesController::class);
+Route::get('/', [DirectoriesController::class, 'index']);
+Route::get('/create', [DirectoriesController::class, 'create']);
+Route::get('{directories_id}/create', [DirectoriesController::class, 'create']);
+Route::post('/', [DirectoriesController::class, 'store']);
+Route::post('/search', [DirectoriesController::class, 'search']);
+Route::get('{id}/edit', [DirectoriesController::class, 'edit']);
+Route::put('{id}', [DirectoriesController::class, 'update']);
+Route::get('{id}/delete', [DirectoriesController::class, 'delete']);
+Route::delete('{id}', [DirectoriesController::class, 'destroy']);
 
-Route::get('files/{directories_id}', [FilesController::class, 'index']);
-Route::get('files/{directories_id}/create', [FilesController::class, 'create']);
-Route::get('files/{directories_id}/edit', [FilesController::class, 'edit']);
-Route::post('files/{directories_id}', [FilesController::class, 'store']);
-Route::put('files/{directories_id}/{id}', [FilesController::class, 'update']);
-Route::delete('files/{directories_id}/{id}', [FilesController::class, 'destroy']);
+Route::get('{directories_id}/files', [FilesController::class, 'index']);
+Route::get('{directories_id}/files/create', [FilesController::class, 'create']);
+Route::get('{directories_id}/files/{id}/edit', [FilesController::class, 'edit']);
+Route::post('{directories_id}/files', [FilesController::class, 'store']);
+Route::post('{directories_id}/files/search', [FilesController::class, 'search']);
+Route::put('{directories_id}/files/{id}', [FilesController::class, 'update']);
+Route::get('{directories_id}/files/{id}/delete', [FilesController::class, 'delete']);
+Route::delete('{directories_id}/files/{id}', [FilesController::class, 'destroy']);

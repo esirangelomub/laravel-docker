@@ -29,7 +29,7 @@ class File extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'file_size' => 'decimal:8',
+        'file_size' => 'decimal:0',
         'path' => 'string',
         'directories_id' => 'integer'
     ];
