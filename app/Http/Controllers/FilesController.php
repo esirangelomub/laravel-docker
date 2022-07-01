@@ -71,7 +71,7 @@ class FilesController extends Controller
 
     public function search(int $directories_id)
     {
-        return redirect('/files/' . $directories_id)->with('search', request()->input('search'));
+        return redirect($directories_id . '/files')->with('search', request()->input('search'));
     }
 
     /**

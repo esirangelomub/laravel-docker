@@ -58,13 +58,13 @@
         @foreach($collection->parent_directories->all() as $directory)
             <tr>
 
-                <td><i class="material-icons" data-toggle="tooltip" title="Directories">&#xe2c7;</i></td>
+                <td><i class="material-icons" title="Directories">&#xe2c7;</i></td>
                 <td>{{ $directory->name }}</td>
                 <td>{{ $directory->path }}</td>
                 <td class="text-center">
-                    <a href='{{ url("{$directory->id}/files") }}' class="read"><i class="material-icons" data-toggle="tooltip" title="Directories/Files">&#xe0ee;</i></a>
-                    <a href='{{ url("{$directory->id}/edit") }}' class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xe745;</i></a>
-                    <a href='{{ url("{$directory->id}/delete") }}' class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    <a href='{{ url("{$directory->id}/files") }}' class="read"><i class="material-icons" title="Directories/Files">&#xe0ee;</i></a>
+                    <a href='{{ url("{$directory->id}/edit") }}' class="edit"><i class="material-icons" title="Edit">&#xe745;</i></a>
+                    <a href='{{ url("{$directory->id}/delete") }}' class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>
         @endforeach
@@ -74,12 +74,12 @@
         @foreach($collection->files->all() as $file)
             <tr>
 
-                <td><i class="material-icons" data-toggle="tooltip" title="Files">&#xe873;</i></td>
+                <td><i class="material-icons" title="Files">&#xe873;</i></td>
                 <td>{{ $file->name }} ({{ $file->file_size }} Mb)</td>
                 <td>{{ $file->path }}</td>
                 <td class="text-center">
-                    <a href='{{ url("{$file->directories_id}/files/{$file->id}/edit") }}' class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xe745;</i></a>
-                    <a href='{{ url("{$file->directories_id}/files/{$file->id}/delete") }}' class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    <a href='{{ url("{$file->directories_id}/files/{$file->id}/edit") }}' class="edit"><i class="material-icons" title="Edit">&#xe745;</i></a>
+                    <a href='{{ url("{$file->directories_id}/files/{$file->id}/delete") }}' class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>
         @endforeach
