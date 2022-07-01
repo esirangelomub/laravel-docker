@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.11009174311927" branch-rate="0" lines-covered="12" lines-valid="109" branches-covered="0" branches-valid="0" complexity="42" version="0.4" timestamp="1656630592">
+<coverage line-rate="0.34862385321101" branch-rate="0" lines-covered="38" lines-valid="109" branches-covered="0" branches-valid="0" complexity="42" version="0.4" timestamp="1656635003">
   <sources>
     <source>/var/www/html/app</source>
   </sources>
@@ -11,14 +11,14 @@
           <methods>
             <method name="commands" signature="" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="3"/>
-                <line number="30" hits="3"/>
+                <line number="28" hits="5"/>
+                <line number="30" hits="5"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="28" hits="3"/>
-            <line number="30" hits="3"/>
+            <line number="28" hits="5"/>
+            <line number="30" hits="5"/>
           </lines>
         </class>
       </classes>
@@ -47,20 +47,20 @@
         </class>
       </classes>
     </package>
-    <package name="" line-rate="0.17142857142857" branch-rate="0" complexity="11">
+    <package name="" line-rate="0.2" branch-rate="0" complexity="11">
       <classes>
-        <class name="App\Http\Controllers\DirectoriesController" filename="Http/Controllers/DirectoriesController.php" line-rate="0.17142857142857" branch-rate="0" complexity="11">
+        <class name="App\Http\Controllers\DirectoriesController" filename="Http/Controllers/DirectoriesController.php" line-rate="0.2" branch-rate="0" complexity="11">
           <methods>
             <method name="index" signature="" line-rate="0.75" branch-rate="0" complexity="2">
               <lines>
-                <line number="19" hits="3"/>
-                <line number="20" hits="3"/>
-                <line number="22" hits="3"/>
+                <line number="19" hits="2"/>
+                <line number="20" hits="2"/>
+                <line number="22" hits="2"/>
                 <line number="24" hits="0"/>
                 <line number="25" hits="0"/>
-                <line number="28" hits="3"/>
-                <line number="35" hits="3"/>
-                <line number="37" hits="3"/>
+                <line number="28" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="37" hits="2"/>
               </lines>
             </method>
             <method name="search" signature="" line-rate="0" branch-rate="0" complexity="1">
@@ -68,9 +68,9 @@
                 <line number="46" hits="0"/>
               </lines>
             </method>
-            <method name="create" signature="mixed $directories_id" line-rate="0" branch-rate="0" complexity="1">
+            <method name="create" signature="mixed $directories_id" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="57" hits="0"/>
+                <line number="57" hits="1"/>
               </lines>
             </method>
             <method name="store" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="2">
@@ -120,16 +120,16 @@
             </method>
           </methods>
           <lines>
-            <line number="19" hits="3"/>
-            <line number="20" hits="3"/>
-            <line number="22" hits="3"/>
+            <line number="19" hits="2"/>
+            <line number="20" hits="2"/>
+            <line number="22" hits="2"/>
             <line number="24" hits="0"/>
             <line number="25" hits="0"/>
-            <line number="28" hits="3"/>
-            <line number="35" hits="3"/>
-            <line number="37" hits="3"/>
+            <line number="28" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="37" hits="2"/>
             <line number="46" hits="0"/>
-            <line number="57" hits="0"/>
+            <line number="57" hits="1"/>
             <line number="78" hits="0"/>
             <line number="82" hits="0"/>
             <line number="83" hits="0"/>
@@ -159,30 +159,30 @@
         </class>
       </classes>
     </package>
-    <package name="" line-rate="0" branch-rate="0" complexity="10">
+    <package name="" line-rate="0.34782608695652" branch-rate="0" complexity="10">
       <classes>
-        <class name="App\Http\Controllers\FilesController" filename="Http/Controllers/FilesController.php" line-rate="0" branch-rate="0" complexity="10">
+        <class name="App\Http\Controllers\FilesController" filename="Http/Controllers/FilesController.php" line-rate="0.34782608695652" branch-rate="0" complexity="10">
           <methods>
-            <method name="index" signature="int $directories_id" line-rate="0" branch-rate="0" complexity="3">
+            <method name="index" signature="int $directories_id" line-rate="0.77777777777778" branch-rate="0" complexity="3">
               <lines>
-                <line number="21" hits="0"/>
-                <line number="23" hits="0"/>
-                <line number="25" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="21" hits="1"/>
+                <line number="23" hits="1"/>
+                <line number="25" hits="1"/>
+                <line number="31" hits="1"/>
+                <line number="33" hits="1"/>
                 <line number="35" hits="0"/>
                 <line number="36" hits="0"/>
-                <line number="39" hits="0"/>
-                <line number="40" hits="0"/>
-                <line number="47" hits="0"/>
-                <line number="49" hits="0"/>
+                <line number="39" hits="1"/>
+                <line number="40" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="49" hits="1"/>
                 <line number="51" hits="0"/>
                 <line number="52" hits="0"/>
-                <line number="56" hits="0"/>
-                <line number="58" hits="0"/>
-                <line number="65" hits="0"/>
-                <line number="66" hits="0"/>
-                <line number="68" hits="0"/>
+                <line number="56" hits="1"/>
+                <line number="58" hits="1"/>
+                <line number="65" hits="1"/>
+                <line number="66" hits="1"/>
+                <line number="68" hits="1"/>
               </lines>
             </method>
             <method name="search" signature="int $directories_id" line-rate="0" branch-rate="0" complexity="1">
@@ -190,10 +190,10 @@
                 <line number="74" hits="0"/>
               </lines>
             </method>
-            <method name="create" signature="int $directories_id" line-rate="0" branch-rate="0" complexity="1">
+            <method name="create" signature="int $directories_id" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="83" hits="0"/>
-                <line number="85" hits="0"/>
+                <line number="83" hits="1"/>
+                <line number="85" hits="1"/>
               </lines>
             </method>
             <method name="store" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
@@ -243,27 +243,27 @@
             </method>
           </methods>
           <lines>
-            <line number="21" hits="0"/>
-            <line number="23" hits="0"/>
-            <line number="25" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="21" hits="1"/>
+            <line number="23" hits="1"/>
+            <line number="25" hits="1"/>
+            <line number="31" hits="1"/>
+            <line number="33" hits="1"/>
             <line number="35" hits="0"/>
             <line number="36" hits="0"/>
-            <line number="39" hits="0"/>
-            <line number="40" hits="0"/>
-            <line number="47" hits="0"/>
-            <line number="49" hits="0"/>
+            <line number="39" hits="1"/>
+            <line number="40" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="49" hits="1"/>
             <line number="51" hits="0"/>
             <line number="52" hits="0"/>
-            <line number="56" hits="0"/>
-            <line number="58" hits="0"/>
-            <line number="65" hits="0"/>
-            <line number="66" hits="0"/>
-            <line number="68" hits="0"/>
+            <line number="56" hits="1"/>
+            <line number="58" hits="1"/>
+            <line number="65" hits="1"/>
+            <line number="66" hits="1"/>
+            <line number="68" hits="1"/>
             <line number="74" hits="0"/>
-            <line number="83" hits="0"/>
-            <line number="85" hits="0"/>
+            <line number="83" hits="1"/>
+            <line number="85" hits="1"/>
             <line number="105" hits="0"/>
             <line number="109" hits="0"/>
             <line number="110" hits="0"/>
@@ -399,24 +399,24 @@
         </class>
       </classes>
     </package>
-    <package name="" line-rate="0" branch-rate="0" complexity="2">
+    <package name="" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="App\Models\Directory" filename="Models/Directory.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="App\Models\Directory" filename="Models/Directory.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="files" signature="" line-rate="0" branch-rate="0" complexity="1">
+            <method name="files" signature="" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="40" hits="0"/>
+                <line number="40" hits="1"/>
               </lines>
             </method>
-            <method name="parent_directories" signature="" line-rate="0" branch-rate="0" complexity="1">
+            <method name="parent_directories" signature="" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="48" hits="0"/>
+                <line number="48" hits="1"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="40" hits="0"/>
-            <line number="48" hits="0"/>
+            <line number="40" hits="1"/>
+            <line number="48" hits="1"/>
           </lines>
         </class>
       </classes>
@@ -451,12 +451,12 @@
           <methods>
             <method name="boot" signature="" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="26" hits="3"/>
+                <line number="26" hits="5"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="26" hits="3"/>
+            <line number="26" hits="5"/>
           </lines>
         </class>
       </classes>
@@ -487,41 +487,41 @@
         </class>
       </classes>
     </package>
-    <package name="" line-rate="0.27272727272727" branch-rate="0" complexity="3">
+    <package name="" line-rate="0.90909090909091" branch-rate="0" complexity="3">
       <classes>
-        <class name="App\Providers\RouteServiceProvider" filename="Providers/RouteServiceProvider.php" line-rate="0.27272727272727" branch-rate="0" complexity="3">
+        <class name="App\Providers\RouteServiceProvider" filename="Providers/RouteServiceProvider.php" line-rate="0.90909090909091" branch-rate="0" complexity="3">
           <methods>
-            <method name="boot" signature="" line-rate="0.22222222222222" branch-rate="0" complexity="1">
+            <method name="boot" signature="" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="38" hits="3"/>
-                <line number="40" hits="3"/>
-                <line number="41" hits="0"/>
-                <line number="42" hits="0"/>
-                <line number="43" hits="0"/>
-                <line number="44" hits="0"/>
-                <line number="46" hits="0"/>
-                <line number="47" hits="0"/>
-                <line number="48" hits="0"/>
+                <line number="38" hits="5"/>
+                <line number="40" hits="5"/>
+                <line number="41" hits="5"/>
+                <line number="42" hits="5"/>
+                <line number="43" hits="5"/>
+                <line number="44" hits="5"/>
+                <line number="46" hits="5"/>
+                <line number="47" hits="5"/>
+                <line number="48" hits="5"/>
               </lines>
             </method>
             <method name="configureRateLimiting" signature="" line-rate="0.5" branch-rate="0" complexity="2">
               <lines>
-                <line number="59" hits="3"/>
+                <line number="59" hits="5"/>
                 <line number="60" hits="0"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="38" hits="3"/>
-            <line number="40" hits="3"/>
-            <line number="41" hits="0"/>
-            <line number="42" hits="0"/>
-            <line number="43" hits="0"/>
-            <line number="44" hits="0"/>
-            <line number="46" hits="0"/>
-            <line number="47" hits="0"/>
-            <line number="48" hits="0"/>
-            <line number="59" hits="3"/>
+            <line number="38" hits="5"/>
+            <line number="40" hits="5"/>
+            <line number="41" hits="5"/>
+            <line number="42" hits="5"/>
+            <line number="43" hits="5"/>
+            <line number="44" hits="5"/>
+            <line number="46" hits="5"/>
+            <line number="47" hits="5"/>
+            <line number="48" hits="5"/>
+            <line number="59" hits="5"/>
             <line number="60" hits="0"/>
           </lines>
         </class>

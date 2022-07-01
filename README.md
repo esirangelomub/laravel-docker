@@ -83,3 +83,24 @@ Start application
 
     php artisan serve --host=localhost --port=8084
 
+## Running tests
+
+With docker
+
+    chmod +x up.sh
+    ./up.sh
+
+or
+
+    ./vendor/bin/sail php artisan test --env=testing
+    ./vendor/bin/coverage-check ./tests/coverage/clover.xml 30
+
+Without docker
+
+    php artisan test --env=testing
+    ./vendor/bin/coverage-check ./tests/coverage/clover.xml 30
+
+## Contacts
+
+eduardo.sirangelo@gmail.com
++55 54 98133-5826
