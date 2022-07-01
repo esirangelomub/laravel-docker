@@ -37,6 +37,13 @@
     </div>
 @endif
 
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h5>Total directories: {{count($collection->parent_directories)}}</h5>
+        <h5>Total files: {{count($collection->files)}}</h5>
+    </div>
+</div>
+
 <table class="table table-striped table-hover">
     <thead>
     <tr>

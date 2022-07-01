@@ -3,8 +3,7 @@
 <div class="table-title">
     <div class="row">
         <div class="col-sm-6">
-            <a href="{{ url('/') }}"><h2>North River Project (Grand Slam Media)</h2>
-            </a>
+            <a href="{{ url('/') }}"><h2>North River Project (Grand Slam Media)</h2></a>
         </div>
         <div class="col-sm-6">
             <a href="{{ url('/create') }}" class="btn btn-outline-danger"><i class="material-icons">&#xE147;</i> <span>Add New Directory</span></a>
@@ -33,6 +32,12 @@
         {{session('info')}}
     </div>
 @endif
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h5>Total directories: {{count($directories)}}</h5>
+    </div>
+</div>
 
 <table class="table table-striped table-hover">
     <thead>
